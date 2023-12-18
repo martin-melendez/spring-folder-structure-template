@@ -11,9 +11,9 @@ public interface IUserService {
 
     UserResponse findUserById(long id);
 
-    UserResponse saveUser(UserRequest userRequest);
+    UserResponse saveUser(UserRequest request);
 
-    UserResponse updateUser(long id, UserRequest userRequest);
+    UserResponse updateUser(long id, UserRequest request);
 
     boolean deleteUser(long id);
 }
