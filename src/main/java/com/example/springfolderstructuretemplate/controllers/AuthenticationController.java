@@ -20,12 +20,12 @@ public class AuthenticationController {
         this._authenticationService = authenticationService;
     }
 
-    @PostMapping(value = "/register")
+    @PostMapping(path = "/register")
     public ResponseEntity<String> register(@RequestBody UserRequest request) {
         return new ResponseEntity<>(_authenticationService.register(request), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/login")
+    @PostMapping(path = "/login")
     public ResponseEntity<String> login(@RequestBody LoginRequest request) {
         return new ResponseEntity<>(_authenticationService.login(request), HttpStatus.OK);
     }
