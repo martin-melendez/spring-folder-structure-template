@@ -21,9 +21,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final JwtService _jwtService;
     private final UserDetailsService _userDetailsService;
 
-    public JwtAuthenticationFilter(JwtService _jwtService, UserDetailsService _userDetailsService) {
-        this._jwtService = _jwtService;
-        this._userDetailsService = _userDetailsService;
+    public JwtAuthenticationFilter(JwtService jwtService, UserDetailsService userDetailsService) {
+        this._jwtService = jwtService;
+        this._userDetailsService = userDetailsService;
     }
 
     @Override
@@ -57,5 +57,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             }
         }
+
+        filterChain.doFilter(request, response);
     }
 }

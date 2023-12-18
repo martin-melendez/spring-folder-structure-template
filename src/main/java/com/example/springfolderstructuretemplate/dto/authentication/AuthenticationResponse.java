@@ -9,10 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class RegisterRequestDto {
+public class AuthenticationResponse {
 
-    private String firstname;
-    private String lastname;
-    private String email;
-    private String password;
+    private String jwtToken;
 }

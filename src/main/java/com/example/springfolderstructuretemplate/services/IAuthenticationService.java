@@ -1,12 +1,11 @@
 package com.example.springfolderstructuretemplate.services;
 
-import com.example.springfolderstructuretemplate.dto.authentication.AuthenticationRequestDto;
-import com.example.springfolderstructuretemplate.dto.authentication.AuthenticationResponseDto;
-import com.example.springfolderstructuretemplate.dto.authentication.RegisterRequestDto;
+import com.example.springfolderstructuretemplate.dto.authentication.LoginRequest;
+import com.example.springfolderstructuretemplate.dto.authentication.RegisterRequest;
 
 public interface IAuthenticationService {
 
-    AuthenticationResponseDto register(RegisterRequestDto request);
+    String register(RegisterRequest request);
 
-    AuthenticationResponseDto authenticate(AuthenticationRequestDto request);
+    String login(LoginRequest request);
 }

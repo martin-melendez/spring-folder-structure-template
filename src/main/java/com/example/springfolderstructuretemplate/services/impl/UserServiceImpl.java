@@ -6,7 +6,6 @@ import com.example.springfolderstructuretemplate.entities.User;
 import com.example.springfolderstructuretemplate.mappers.UserMapper;
 import com.example.springfolderstructuretemplate.repositories.IUserRepository;
 import com.example.springfolderstructuretemplate.services.IUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,22 +32,22 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public UserResponse saveUser(UserRequest userRequest) {
-        User savedUser = _userRepository.save(UserMapper.toEntity(userRequest));
+    public UserResponse saveUser(UserRequest request) {
+        User savedUser = _userRepository.save(UserMapper.toEntity(request));
         return UserMapper.toResponse(savedUser);
     }
 
     @Override
-    public UserResponse updateUser(long id, UserRequest userRequest) {
+    public UserResponse updateUser(long id, UserRequest request) {
         Optional<User> optionalUser = _userRepository.findById(id);
 
         if (optionalUser.isPresent()) {
             User existingUser = optionalUser.get();
 
-            existingUser.setFirstname(userRequest.getFirstname());
-            existingUser.setLastname(userRequest.getLastname());
-            existingUser.setEmail(userRequest.getEmail());
-            existingUser.setPassword(userRequest.getPassword());
+            existingUser.setFirstname(request.getFirstname());
+            existingUser.setLastname(request.getLastname());
+            existingUser.setEmail(request.getEmail());
+            existingUser.setPassword(request.getPassword());
 
             User updatedUser = _userRepository.save(existingUser);
 

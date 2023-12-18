@@ -1,14 +1,12 @@
 package com.example.springfolderstructuretemplate.services.impl;
 
 import com.example.springfolderstructuretemplate.config.JwtService;
-import com.example.springfolderstructuretemplate.dto.authentication.AuthenticationRequestDto;
-import com.example.springfolderstructuretemplate.dto.authentication.AuthenticationResponseDto;
-import com.example.springfolderstructuretemplate.dto.authentication.RegisterRequestDto;
+import com.example.springfolderstructuretemplate.dto.authentication.LoginRequest;
+import com.example.springfolderstructuretemplate.dto.authentication.RegisterRequest;
 import com.example.springfolderstructuretemplate.entities.Role;
 import com.example.springfolderstructuretemplate.entities.User;
 import com.example.springfolderstructuretemplate.repositories.IUserRepository;
 import com.example.springfolderstructuretemplate.services.IAuthenticationService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,7 +28,7 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
     }
 
     @Override
-    public AuthenticationResponseDto register(RegisterRequestDto request) {
+    public String register(RegisterRequest request) {
         User user = User.builder()
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
@@ -40,15 +38,11 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
                 .build();
 
         _userRepository.save(user);
-
-        String jwtToken = _jwtService.generateToken(user);
-        return AuthenticationResponseDto.builder()
-                .jwtToken(jwtToken)
-                .build();
+        return _jwtService.generateToken(user);
     }
 
     @Override
-    public AuthenticationResponseDto authenticate(AuthenticationRequestDto request) {
+    public String login(LoginRequest request) {
         _authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
@@ -56,12 +50,7 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
                 )
         );
 
-        User user = _userRepository.findByEmail(request.getEmail())
-                .orElseThrow();
-
-        String jwtToken = _jwtService.generateToken(user);
-        return AuthenticationResponseDto.builder()
-                .jwtToken(jwtToken)
-                .build();
+        User user = _userRepository.findByEmail(request.getEmail()).orElseThrow();
+        return _jwtService.generateToken(user);
     }
 }

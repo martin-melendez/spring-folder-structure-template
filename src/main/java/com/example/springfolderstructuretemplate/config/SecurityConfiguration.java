@@ -17,9 +17,9 @@ public class SecurityConfiguration {
     private final JwtAuthenticationFilter _jwtAuthenticationFilter;
     private final AuthenticationProvider _authenticationProvider;
 
-    public SecurityConfiguration(JwtAuthenticationFilter _jwtAuthenticationFilter, AuthenticationProvider _authenticationProvider) {
-        this._jwtAuthenticationFilter = _jwtAuthenticationFilter;
-        this._authenticationProvider = _authenticationProvider;
+    public SecurityConfiguration(JwtAuthenticationFilter jwtAuthenticationFilter, AuthenticationProvider authenticationProvider) {
+        this._jwtAuthenticationFilter = jwtAuthenticationFilter;
+        this._authenticationProvider = authenticationProvider;
     }
 
     @Bean
@@ -28,7 +28,7 @@ public class SecurityConfiguration {
         httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authentication -> authentication
-                        .requestMatchers("/api/authentication/**")
+                        .requestMatchers("/api/auth/**")
                         .permitAll()
                         .anyRequest()
                         .authenticated()
