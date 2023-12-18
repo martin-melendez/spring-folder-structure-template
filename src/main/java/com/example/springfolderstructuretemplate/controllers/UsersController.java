@@ -3,7 +3,6 @@ package com.example.springfolderstructuretemplate.controllers;
 import com.example.springfolderstructuretemplate.dto.user.UserRequest;
 import com.example.springfolderstructuretemplate.dto.user.UserResponse;
 import com.example.springfolderstructuretemplate.services.IUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +15,6 @@ public class UsersController {
 
     private final IUserService _userService;
 
-    @Autowired
     public UsersController(IUserService userService) {
         this._userService = userService;
     }
