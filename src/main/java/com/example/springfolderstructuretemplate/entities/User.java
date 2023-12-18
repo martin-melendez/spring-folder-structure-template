@@ -33,8 +33,8 @@ public class User implements UserDetails {
     @Column(length = 25, name = "lastname", nullable = false)
     private String lastname;
 
-    @Column(length = 255, name = "email", nullable = false)
-    private String email;
+    @Column(length = 255, name = "username", nullable = false)
+    private String username;
 
     @Column(length = 255, name = "password", nullable = false)
     private String password;
@@ -57,7 +57,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email;
+        return username;
     }
 
     @Override

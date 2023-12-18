@@ -2,9 +2,10 @@ package com.example.springfolderstructuretemplate.services.impl;
 
 import com.example.springfolderstructuretemplate.config.JwtService;
 import com.example.springfolderstructuretemplate.dto.authentication.LoginRequest;
-import com.example.springfolderstructuretemplate.dto.authentication.RegisterRequest;
+import com.example.springfolderstructuretemplate.dto.user.UserRequest;
 import com.example.springfolderstructuretemplate.entities.Role;
 import com.example.springfolderstructuretemplate.entities.User;
+import com.example.springfolderstructuretemplate.mappers.UserMapper;
 import com.example.springfolderstructuretemplate.repositories.IUserRepository;
 import com.example.springfolderstructuretemplate.services.IAuthenticationService;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,14 +29,10 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
     }
 
     @Override
-    public String register(RegisterRequest request) {
-        User user = User.builder()
-                .firstname(request.getFirstname())
-                .lastname(request.getLastname())
-                .email(request.getEmail())
-                .password(_passwordEncoder.encode(request.getPassword()))
-                .role(Role.REGULAR_USER)
-                .build();
+    public String register(UserRequest request) {
+        User user = UserMapper.toEntity(request);
+        user.setPassword(_passwordEncoder.encode(request.getPassword()));
+        user.setRole(Role.REGULAR_USER);
 
         _userRepository.save(user);
         return _jwtService.generateToken(user);
@@ -45,12 +42,12 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
     public String login(LoginRequest request) {
         _authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
+                        request.getUsername(),
                         request.getPassword()
                 )
         );
 
-        User user = _userRepository.findByEmail(request.getEmail()).orElseThrow();
+        User user = _userRepository.findByUsername(request.getUsername()).orElseThrow();
         return _jwtService.generateToken(user);
     }
 }

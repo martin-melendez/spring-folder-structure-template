@@ -1,7 +1,7 @@
 package com.example.springfolderstructuretemplate.controllers;
 
 import com.example.springfolderstructuretemplate.dto.authentication.LoginRequest;
-import com.example.springfolderstructuretemplate.dto.authentication.RegisterRequest;
+import com.example.springfolderstructuretemplate.dto.user.UserRequest;
 import com.example.springfolderstructuretemplate.services.IAuthenticationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +21,7 @@ public class AuthenticationController {
     }
 
     @PostMapping(value = "/register")
-    public ResponseEntity<String> register(@RequestBody RegisterRequest request) {
+    public ResponseEntity<String> register(@RequestBody UserRequest request) {
         return new ResponseEntity<>(_authenticationService.register(request), HttpStatus.OK);
     }
 

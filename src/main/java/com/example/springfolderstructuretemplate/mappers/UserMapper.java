@@ -9,7 +9,7 @@ public class UserMapper {
         return User.builder()
                 .firstname(userRequest.getFirstname())
                 .lastname(userRequest.getLastname())
-                .email(userRequest.getEmail())
+                .username(userRequest.getUsername())
                 .password(userRequest.getPassword())
                 .build();
     }
@@ -18,7 +18,7 @@ public class UserMapper {
         return UserResponse.builder()
                 .firstname(user.getFirstname())
                 .lastname(user.getLastname())
-                .email(user.getEmail())
+                .username(user.getUsername())
                 .createdAt(user.getCreatedAt())
                 .modifiedAt(user.getModifiedAt())
                 .build();
