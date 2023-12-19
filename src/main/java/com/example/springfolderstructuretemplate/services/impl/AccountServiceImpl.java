@@ -1,6 +1,7 @@
 package com.example.springfolderstructuretemplate.services.impl;
 
 import com.example.springfolderstructuretemplate.config.JwtService;
+import com.example.springfolderstructuretemplate.dto.account.ChangePasswordRequest;
 import com.example.springfolderstructuretemplate.dto.account.LoginRequest;
 import com.example.springfolderstructuretemplate.dto.user.UserRequest;
 import com.example.springfolderstructuretemplate.entities.Role;
@@ -54,16 +55,17 @@ public class AccountServiceImpl implements IAccountService {
     }
 
     @Override
-    public boolean changePassword(long id, String rawPassword) {
+    public boolean changePassword(long id, ChangePasswordRequest request) {
         Optional<User> optionalUser = _userRepository.findById(id);
 
         if (optionalUser.isPresent()) {
             User existingUser = optionalUser.get();
 
-            if (!_passwordEncoder.matches(rawPassword, existingUser.getPassword())) {
-                existingUser.setPassword(_passwordEncoder.encode(rawPassword));
+            if (!_passwordEncoder.matches(request.getOldPassword(), existingUser.getPassword()) || _passwordEncoder.matches(request.getNewPassword(), existingUser.getPassword())) {
+                return false;
             }
 
+            existingUser.setPassword(_passwordEncoder.encode(request.getNewPassword()));
             _userRepository.save(existingUser);
             return true;
         }

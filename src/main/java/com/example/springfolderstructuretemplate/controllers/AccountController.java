@@ -1,5 +1,6 @@
 package com.example.springfolderstructuretemplate.controllers;
 
+import com.example.springfolderstructuretemplate.dto.account.ChangePasswordRequest;
 import com.example.springfolderstructuretemplate.dto.account.LoginRequest;
 import com.example.springfolderstructuretemplate.dto.user.UserRequest;
 import com.example.springfolderstructuretemplate.services.IAccountService;
@@ -29,13 +30,13 @@ public class AccountController {
 
     // TODO: create dto with old and new password
     @PutMapping(path = "/password/{id}")
-    public ResponseEntity<Boolean> changePassword(@PathVariable(name = "id") long id, @RequestBody String request) {
+    public ResponseEntity<Boolean> changePassword(@PathVariable(name = "id") long id, @RequestBody ChangePasswordRequest request) {
         boolean updatedUser = _accountService.changePassword(id, request);
 
         if (updatedUser) {
             return new ResponseEntity<>(true, HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 }
