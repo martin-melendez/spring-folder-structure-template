@@ -28,7 +28,6 @@ public class AccountController {
         return new ResponseEntity<>(_accountService.login(request), HttpStatus.OK);
     }
 
-    // TODO: create dto with old and new password
     @PutMapping(path = "/password/{id}")
     public ResponseEntity<Boolean> changePassword(@PathVariable(name = "id") long id, @RequestBody ChangePasswordRequest request) {
         boolean updatedUser = _accountService.changePassword(id, request);
