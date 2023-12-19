@@ -1,11 +1,13 @@
 package com.example.springfolderstructuretemplate.services;
 
-import com.example.springfolderstructuretemplate.dto.authentication.LoginRequest;
+import com.example.springfolderstructuretemplate.dto.account.LoginRequest;
 import com.example.springfolderstructuretemplate.dto.user.UserRequest;
 
-public interface IAuthenticationService {
+public interface IAccountService {
 
     String register(UserRequest request);
 
     String login(LoginRequest request);
+
+    boolean changePassword(long id, String rawPassword);
 }

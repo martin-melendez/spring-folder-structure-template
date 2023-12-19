@@ -5,13 +5,11 @@ import com.example.springfolderstructuretemplate.dto.user.UserResponse;
 
 import java.util.List;
 
-public interface IUserService {
+public interface IUserManagementService {
 
     List<UserResponse> findUsers();
 
     UserResponse findUserById(long id);
-
-    UserResponse saveUser(UserRequest request);
 
     UserResponse updateUser(long id, UserRequest request);
 

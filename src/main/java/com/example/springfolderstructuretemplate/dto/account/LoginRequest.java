@@ -1,4 +1,4 @@
-package com.example.springfolderstructuretemplate.dto.authentication;
+package com.example.springfolderstructuretemplate.dto.account;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

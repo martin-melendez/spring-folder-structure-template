@@ -5,7 +5,7 @@ import com.example.springfolderstructuretemplate.dto.user.UserResponse;
 import com.example.springfolderstructuretemplate.entities.User;
 import com.example.springfolderstructuretemplate.mappers.UserMapper;
 import com.example.springfolderstructuretemplate.repositories.IUserRepository;
-import com.example.springfolderstructuretemplate.services.IUserService;
+import com.example.springfolderstructuretemplate.services.IUserManagementService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -14,12 +14,12 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class UserServiceImpl implements IUserService {
+public class UserManagementServiceImpl implements IUserManagementService {
 
     private final IUserRepository _userRepository;
     private final PasswordEncoder _passwordEncoder;
 
-    public UserServiceImpl(IUserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserManagementServiceImpl(IUserRepository userRepository, PasswordEncoder passwordEncoder) {
         this._userRepository = userRepository;
         this._passwordEncoder = passwordEncoder;
     }
@@ -35,36 +35,16 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public UserResponse saveUser(UserRequest request) {
-        User savedUser = _userRepository.save(UserMapper.toEntity(request));
-        return UserMapper.toResponse(savedUser);
-    }
-
-    @Override
     public UserResponse updateUser(long id, UserRequest request) {
         Optional<User> optionalUser = _userRepository.findById(id);
 
         if (optionalUser.isPresent()) {
             User existingUser = optionalUser.get();
-
-            if (!request.getFirstname().equals(existingUser.getFirstname())) {
-                existingUser.setFirstname(request.getFirstname());
-            }
-
-            if (!request.getLastname().equals(existingUser.getLastname())) {
-                existingUser.setLastname(request.getLastname());
-            }
-
-            if (!request.getUsername().equals(existingUser.getUsername())) {
-                existingUser.setUsername(request.getUsername());
-            }
-
-            if (!_passwordEncoder.matches(request.getPassword(), existingUser.getPassword())) {
-                existingUser.setPassword(_passwordEncoder.encode(request.getPassword()));
-            }
+            existingUser.setFirstname(request.getFirstname());
+            existingUser.setLastname(request.getLastname());
+            existingUser.setUsername(request.getUsername());
 
             User updatedUser = _userRepository.save(existingUser);
-
             return UserMapper.toResponse(updatedUser);
         }
 
