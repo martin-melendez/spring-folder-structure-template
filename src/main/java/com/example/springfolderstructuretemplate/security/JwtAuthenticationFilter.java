@@ -1,4 +1,4 @@
-package com.example.springfolderstructuretemplate.config;
+package com.example.springfolderstructuretemplate.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

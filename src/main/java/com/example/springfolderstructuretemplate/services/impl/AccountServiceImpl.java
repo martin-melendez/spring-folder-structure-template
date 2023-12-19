@@ -1,6 +1,6 @@
 package com.example.springfolderstructuretemplate.services.impl;
 
-import com.example.springfolderstructuretemplate.config.JwtService;
+import com.example.springfolderstructuretemplate.security.JwtService;
 import com.example.springfolderstructuretemplate.dto.account.ChangePasswordRequest;
 import com.example.springfolderstructuretemplate.dto.account.LoginRequest;
 import com.example.springfolderstructuretemplate.dto.user.UserRequest;

@@ -1,4 +1,4 @@
-package com.example.springfolderstructuretemplate.config;
+package com.example.springfolderstructuretemplate.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

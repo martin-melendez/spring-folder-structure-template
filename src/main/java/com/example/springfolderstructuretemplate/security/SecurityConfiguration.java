@@ -1,4 +1,4 @@
-package com.example.springfolderstructuretemplate.config;
+package com.example.springfolderstructuretemplate.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
