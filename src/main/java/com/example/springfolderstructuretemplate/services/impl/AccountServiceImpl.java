@@ -11,6 +11,7 @@ import com.example.springfolderstructuretemplate.repositories.IUserRepository;
 import com.example.springfolderstructuretemplate.services.IAccountService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +50,8 @@ public class AccountServiceImpl implements IAccountService {
                         request.getPassword()
                 )
         );
+
+        System.out.println(SecurityContextHolder.getContext().getAuthentication());
 
         User user = _userRepository.findByUsername(request.getUsername()).orElseThrow();
         return _jwtService.generateToken(user);
