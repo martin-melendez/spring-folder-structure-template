@@ -6,7 +6,6 @@ import com.example.springfolderstructuretemplate.entities.User;
 import com.example.springfolderstructuretemplate.mappers.UserMapper;
 import com.example.springfolderstructuretemplate.repositories.IUserRepository;
 import com.example.springfolderstructuretemplate.services.IUserManagementService;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,11 +16,9 @@ import java.util.stream.Collectors;
 public class UserManagementServiceImpl implements IUserManagementService {
 
     private final IUserRepository _userRepository;
-    private final PasswordEncoder _passwordEncoder;
 
-    public UserManagementServiceImpl(IUserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserManagementServiceImpl(IUserRepository userRepository) {
         this._userRepository = userRepository;
-        this._passwordEncoder = passwordEncoder;
     }
 
     @Override
