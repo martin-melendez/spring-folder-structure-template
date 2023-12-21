@@ -22,16 +22,6 @@ public class SecurityConfiguration {
         this._authenticationProvider = authenticationProvider;
     }
 
-    /**
-     * Configures the security filter chain for the application.
-     * This method sets up security configurations, disables CSRF protection,
-     * permits certain unauthenticated requests, enforces stateless session management,
-     * specifies the authentication provider, and adds a JWT authentication filter.
-     *
-     * @param httpSecurity The HTTP security configuration.
-     * @return The configured security filter chain.
-     * @throws Exception If an exception occurs during configuration.
-     */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
