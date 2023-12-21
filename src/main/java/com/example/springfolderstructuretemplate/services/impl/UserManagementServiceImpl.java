@@ -4,8 +4,8 @@ import com.example.springfolderstructuretemplate.dto.user.UserRequest;
 import com.example.springfolderstructuretemplate.dto.user.UserResponse;
 import com.example.springfolderstructuretemplate.entities.User;
 import com.example.springfolderstructuretemplate.mappers.UserMapper;
-import com.example.springfolderstructuretemplate.repositories.IUserRepository;
-import com.example.springfolderstructuretemplate.services.IUserManagementService;
+import com.example.springfolderstructuretemplate.repositories.UserRepository;
+import com.example.springfolderstructuretemplate.services.UserManagementService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,11 +13,11 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class UserManagementServiceImpl implements IUserManagementService {
+public class UserManagementServiceImpl implements UserManagementService {
 
-    private final IUserRepository _userRepository;
+    private final UserRepository _userRepository;
 
-    public UserManagementServiceImpl(IUserRepository userRepository) {
+    public UserManagementServiceImpl(UserRepository userRepository) {
         this._userRepository = userRepository;
     }
 

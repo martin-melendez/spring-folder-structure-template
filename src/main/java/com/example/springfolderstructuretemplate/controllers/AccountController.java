@@ -3,7 +3,7 @@ package com.example.springfolderstructuretemplate.controllers;
 import com.example.springfolderstructuretemplate.dto.account.ChangePasswordRequest;
 import com.example.springfolderstructuretemplate.dto.account.LoginRequest;
 import com.example.springfolderstructuretemplate.dto.user.UserRequest;
-import com.example.springfolderstructuretemplate.services.IAccountService;
+import com.example.springfolderstructuretemplate.services.AccountService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/api/account")
 public class AccountController {
 
-    private final IAccountService _accountService;
+    private final AccountService _accountService;
 
-    public AccountController(IAccountService accountService) {
+    public AccountController(AccountService accountService) {
         this._accountService = accountService;
     }
 

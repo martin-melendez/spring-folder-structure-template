@@ -2,7 +2,7 @@ package com.example.springfolderstructuretemplate.controllers;
 
 import com.example.springfolderstructuretemplate.dto.user.UserRequest;
 import com.example.springfolderstructuretemplate.dto.user.UserResponse;
-import com.example.springfolderstructuretemplate.services.IUserManagementService;
+import com.example.springfolderstructuretemplate.services.UserManagementService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +13,9 @@ import java.util.List;
 @RequestMapping(path = "/api/users")
 public class UserManagementController {
 
-    private final IUserManagementService _userManagementService;
+    private final UserManagementService _userManagementService;
 
-    public UserManagementController(IUserManagementService userManagementService) {
+    public UserManagementController(UserManagementService userManagementService) {
         this._userManagementService = userManagementService;
     }
 

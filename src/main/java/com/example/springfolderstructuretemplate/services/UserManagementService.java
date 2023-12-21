@@ -5,7 +5,7 @@ import com.example.springfolderstructuretemplate.dto.user.UserResponse;
 
 import java.util.List;
 
-public interface IUserManagementService {
+public interface UserManagementService {
 
     List<UserResponse> findUsers();
 

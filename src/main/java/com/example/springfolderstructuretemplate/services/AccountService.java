@@ -4,7 +4,7 @@ import com.example.springfolderstructuretemplate.dto.account.ChangePasswordReque
 import com.example.springfolderstructuretemplate.dto.account.LoginRequest;
 import com.example.springfolderstructuretemplate.dto.user.UserRequest;
 
-public interface IAccountService {
+public interface AccountService {
 
     String register(UserRequest request);
 

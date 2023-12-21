@@ -6,9 +6,9 @@ import com.example.springfolderstructuretemplate.dto.user.UserRequest;
 import com.example.springfolderstructuretemplate.entities.Role;
 import com.example.springfolderstructuretemplate.entities.User;
 import com.example.springfolderstructuretemplate.mappers.UserMapper;
-import com.example.springfolderstructuretemplate.repositories.IUserRepository;
+import com.example.springfolderstructuretemplate.repositories.UserRepository;
 import com.example.springfolderstructuretemplate.security.JwtService;
-import com.example.springfolderstructuretemplate.services.IAccountService;
+import com.example.springfolderstructuretemplate.services.AccountService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,14 +17,14 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class AccountServiceImpl implements IAccountService {
+public class AccountServiceImpl implements AccountService {
 
-    private final IUserRepository _userRepository;
+    private final UserRepository _userRepository;
     private final PasswordEncoder _passwordEncoder;
     private final JwtService _jwtService;
     private final AuthenticationManager _authenticationManager;
 
-    public AccountServiceImpl(IUserRepository userRepository, PasswordEncoder passwordEncoder, JwtService jwtService, AuthenticationManager authenticationManager) {
+    public AccountServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtService jwtService, AuthenticationManager authenticationManager) {
         this._userRepository = userRepository;
         this._passwordEncoder = passwordEncoder;
         this._jwtService = jwtService;
