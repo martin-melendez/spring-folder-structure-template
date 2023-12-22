@@ -13,6 +13,8 @@ import java.util.Date;
 @AllArgsConstructor
 public class UserResponse {
 
+    private long id;
+
     private String firstname;
     private String lastname;
     private String username;
