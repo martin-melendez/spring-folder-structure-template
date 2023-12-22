@@ -19,7 +19,7 @@ public class ApplicationConfig {
     private final UserRepository _userRepository;
 
     public ApplicationConfig(UserRepository userRepository) {
-        this._userRepository = userRepository;
+        _userRepository = userRepository;
     }
 
     @Bean

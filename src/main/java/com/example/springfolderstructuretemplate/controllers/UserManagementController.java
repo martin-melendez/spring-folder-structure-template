@@ -16,7 +16,7 @@ public class UserManagementController {
     private final UserManagementService _userManagementService;
 
     public UserManagementController(UserManagementService userManagementService) {
-        this._userManagementService = userManagementService;
+        _userManagementService = userManagementService;
     }
 
     @GetMapping

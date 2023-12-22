@@ -25,10 +25,10 @@ public class AccountServiceImpl implements AccountService {
     private final AuthenticationManager _authenticationManager;
 
     public AccountServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtService jwtService, AuthenticationManager authenticationManager) {
-        this._userRepository = userRepository;
-        this._passwordEncoder = passwordEncoder;
-        this._jwtService = jwtService;
-        this._authenticationManager = authenticationManager;
+        _userRepository = userRepository;
+        _passwordEncoder = passwordEncoder;
+        _jwtService = jwtService;
+        _authenticationManager = authenticationManager;
     }
 
     @Override

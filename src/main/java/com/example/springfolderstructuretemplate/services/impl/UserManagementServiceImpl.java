@@ -18,7 +18,7 @@ public class UserManagementServiceImpl implements UserManagementService {
     private final UserRepository _userRepository;
 
     public UserManagementServiceImpl(UserRepository userRepository) {
-        this._userRepository = userRepository;
+        _userRepository = userRepository;
     }
 
     @Override
