@@ -7,8 +7,6 @@ import com.example.springfolderstructuretemplate.dto.user.UserRequest;
 public interface AccountService {
 
     String register(UserRequest request);
-
     String login(LoginRequest request);
-
     boolean changePassword(long id, ChangePasswordRequest request);
 }
