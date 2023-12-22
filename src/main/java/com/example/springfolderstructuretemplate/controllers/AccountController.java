@@ -15,22 +15,22 @@ public class AccountController {
     private final AccountService _accountService;
 
     public AccountController(AccountService accountService) {
-        this._accountService = accountService;
+        _accountService = accountService;
     }
 
     @PostMapping(path = "/register")
     public ResponseEntity<String> register(@RequestBody UserRequest request) {
-        return new ResponseEntity<>(this._accountService.register(request), HttpStatus.OK);
+        return new ResponseEntity<>(_accountService.register(request), HttpStatus.OK);
     }
 
     @PostMapping(path = "/login")
     public ResponseEntity<String> login(@RequestBody LoginRequest request) {
-        return new ResponseEntity<>(this._accountService.login(request), HttpStatus.OK);
+        return new ResponseEntity<>(_accountService.login(request), HttpStatus.OK);
     }
 
     @PutMapping(path = "/password/{id}")
     public ResponseEntity<Boolean> changePassword(@PathVariable(name = "id") long id, @RequestBody ChangePasswordRequest request) {
-        boolean updatedUser = this._accountService.changePassword(id, request);
+        boolean updatedUser = _accountService.changePassword(id, request);
 
         if (updatedUser) {
             return new ResponseEntity<>(true, HttpStatus.OK);
